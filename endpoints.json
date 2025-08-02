@@ -1,0 +1,3421 @@
+[
+    {
+        "Section": "3.2.1.2",
+        "Name": "AF_DATA_REQUEST",
+        "Description": "This command is used by the tester to build and send a message through AF layer.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "DstEndpoint": "1",
+                "SrcEndpoint": "1",
+                "ClusterId": "2",
+                "TransId": "1",
+                "Options": "1",
+                "Radius": "1",
+                "Len": "1",
+                "Data": "0-128"
+            }
+        },
+        "Length": {
+            "min": "0x0A",
+            "max": "0x8A"
+        },
+        "Cmd0": "0x24",
+        "Cmd1": "0x01"
+    },
+    {
+        "Section": "3.2.1.6",
+        "Name": "DATA_STORE",
+        "Description": "Huge AF data request data buffer store command and data.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Index": "2",
+                "Length": "1",
+                "Data": "0-252"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0xFA"
+        },
+        "Cmd0": "0x24",
+        "Cmd1": "0x11"
+    },
+    {
+        "Section": "3.2.1.7",
+        "Name": "DATA_RETRIEVE",
+        "Description": "Huge AF incoming message data buffer retrieve command.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Timestamp": "4",
+                "Index": "2",
+                "Length": "1"
+            }
+        },
+        "Length": {
+            "min": "0x07",
+            "max": "0x07"
+        },
+        "Cmd0": "0x24",
+        "Cmd1": "0x12"
+    },
+    {
+        "Section": "3.2.1.8",
+        "Name": "AF_APSF_CONFIG_SET",
+        "Description": "MT proxy for afAPSF_ConfigSet().",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "endPoint": "1",
+                "frameDelay": "1",
+                "windowSize": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x24",
+        "Cmd1": "0x13"
+    },
+    {
+        "Section": "3.2.1.2",
+        "Name": "AF_REFLECT_ERROR",
+        "Description": "This command is sent by the device to the user when it determines that an error occurred during areflected message.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Status": "1",
+                "Endpoint": "1",
+                "TransId": "1",
+                "dstAddrMode": "1",
+                "dstAddr": "2"
+            }
+        },
+        "Length": {
+            "min": "0x06",
+            "max": "0x06"
+        },
+        "Cmd0": "0x44",
+        "Cmd1": "0x83"
+    },
+    {
+        "Section": "3.2.1.3",
+        "Name": "AF_INCOMING_MSG",
+        "Description": "This callback message is in response to incoming data to any of the registered endpoints on thisdevice.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "GroupId": "2",
+                "ClusterId": "2",
+                "SrcAddr": "2",
+                "SrcEndpoint": "1",
+                "DstEndpoint": "1",
+                "WasBroadcast": "1",
+                "LinkQuality": "1",
+                "SecurityUse": "1",
+                "Timestamp": "4",
+                "TransSeqNumber": "1",
+                "Len": "1",
+                "Data": "0-128"
+            }
+        },
+        "Length": {
+            "min": "0x11",
+            "max": "0x91"
+        },
+        "Cmd0": "0x44",
+        "Cmd1": "0x81"
+    },
+    {
+        "Section": "3.3.1.1",
+        "Name": "APP_MSG",
+        "Description": "This command is sent to the target in order to test the functions defined for individual applications.This command sends a raw data to an application.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "AppEndpoint": "1",
+                "DestAddress": "2",
+                "DestEndpoint": "1",
+                "ClusterId": "2",
+                "MsgLen": "1",
+                "Message": "0-128"
+            }
+        },
+        "Length": {
+            "min": "0x07",
+            "max": "0x87"
+        },
+        "Cmd0": "0x29",
+        "Cmd1": "0x00"
+    },
+    {
+        "Section": "3.3.1.2",
+        "Name": "APP_USER_TEST",
+        "Description": "This command is used by tester to issue user\u2019s defined commands to the application.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "SrcEP": "1",
+                "CommandId": "2",
+                "Parameter1": "2",
+                "Parameter2": "2"
+            }
+        },
+        "Length": {
+            "min": "0x07",
+            "max": "0x07"
+        },
+        "Cmd0": "0x29",
+        "Cmd1": "0x01"
+    },
+    {
+        "Section": "3.4.1.1",
+        "Name": "DEBUG_SET_THRESHOLD",
+        "Description": "This command allows the user to set the threshold for the debug message.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ComponentId": "1",
+                "Threshold": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x28",
+        "Cmd1": "0x00"
+    },
+    {
+        "Section": "3.4.1.2",
+        "Name": "DEBUG_MSG",
+        "Description": "This command sends a debug string to Z-Tool. The content of the string is defined by theapplication.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Length": "1",
+                "String": "0-254"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0xFA"
+        },
+        "Cmd0": "0x48",
+        "Cmd1": "0x00"
+    },
+    {
+        "Section": "3.5.1.1",
+        "Name": "MAC_RESET_REQ",
+        "Description": "This command is used to send a MAC Reset command to reset MAC state machine.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "SetDefault": "1"
+            }
+        },
+        "Length": {
+            "min": "0x02",
+            "max": "0x02"
+        },
+        "Cmd0": "0x22",
+        "Cmd1": "0x01"
+    },
+    {
+        "Section": "3.5.1.2",
+        "Name": "MAC_INIT",
+        "Description": "This command is used to initialize the MAC.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x22",
+        "Cmd1": "0x02"
+    },
+    {
+        "Section": "3.5.1.4",
+        "Name": "MAC_SYNC_REQ",
+        "Description": "This command is used to request synchronization to the current network beacon",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "LogicalChannel": "1",
+                "ChannelPage": "1",
+                "TrackBeacon": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x22",
+        "Cmd1": "0x04"
+    },
+    {
+        "Section": "3.5.1.5",
+        "Name": "MAC_DATA_REQ",
+        "Description": "This command is used to send (on behalf of the next higher layer) MAC Data Frame packet.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DestAddressMode": "1",
+                "DestAddress": "8",
+                "DestPanId": "2",
+                "SrcAddressMode": "1",
+                "Handle": "1",
+                "TxOption": "1",
+                "LogicalChannel": "1",
+                "Power": "1",
+                "KeySource": "8",
+                "SecurityLevel": "1",
+                "KeyIdMode": "1",
+                "KeyIndex": "1",
+                "MSDULength": "1",
+                "MSDU": "0-250"
+            }
+        },
+        "Length": {
+            "min": "0x15",
+            "max": "0x114"
+        },
+        "Cmd0": "0x22",
+        "Cmd1": "0x05"
+    },
+    {
+        "Section": "3.5.1.6",
+        "Name": "MAC_ASSOCIATE_REQ",
+        "Description": "This command is used to request (on behalf of the next higher layer) an association with acoordinator",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "LogicalChannel": "1",
+                "ChannelPage": "1",
+                "CoordAddressMode": "1",
+                "CoordAddress": "8",
+                "CoordPanId": "2",
+                "CapabilityInformation": "1",
+                "KeySource": "8",
+                "SecurityLevel": "1",
+                "KeyIdMode": "1",
+                "KeyIndex": "1"
+            }
+        },
+        "Length": {
+            "min": "0x12",
+            "max": "0x12"
+        },
+        "Cmd0": "0x22",
+        "Cmd1": "0x06"
+    },
+    {
+        "Section": "3.5.1.7",
+        "Name": "MAC_ASSOCIATE_RSP",
+        "Description": "This command is sent by the host to response to the MAC_ASSOCIATE_IND.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ExtAddr": "8",
+                "AssocShortAddress": "2",
+                "AssocStatus": "1"
+            }
+        },
+        "Length": {
+            "min": "0x0B",
+            "max": "0x0B"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x50"
+    },
+    {
+        "Section": "3.5.1.8",
+        "Name": "MAC_DISASSOCIATE_REQ",
+        "Description": "This command is used to request (on behalf of the next higher layer) a disassociation of the devicefrom the coordinator.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DeviceAddressMode": "1",
+                "DeviceAddress": "8",
+                "DevicePanId": "2",
+                "DisassociateReason": "1",
+                "TxIndirect": "1",
+                "KeySource": "8",
+                "SecurityLevel": "1",
+                "KeyIdMode": "1",
+                "KeyIndex": "1"
+            }
+        },
+        "Length": {
+            "min": "0x18",
+            "max": "0x18"
+        },
+        "Cmd0": "0x22",
+        "Cmd1": "0x07"
+    },
+    {
+        "Section": "3.5.1.9",
+        "Name": "MAC_GET_REQ",
+        "Description": "This command is used to read (on behalf of the next higher layer) a MAC PIB attribute.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Attribute": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x22",
+        "Cmd1": "0x08"
+    },
+    {
+        "Section": "3.5.1.10",
+        "Name": "MAC_SET_REQ",
+        "Description": "This command is used to request the device to write a MAC PIB value.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Attribute": "1",
+                "AttributeValue": "16"
+            }
+        },
+        "Length": {
+            "min": "0x11",
+            "max": "0x11"
+        },
+        "Cmd0": "0x22",
+        "Cmd1": "0x09"
+    },
+    {
+        "Section": "3.5.1.11",
+        "Name": "MAC_SCAN_REQ",
+        "Description": "This command is used to send a request to the device to perform a network scan.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ScanChannels": "4",
+                "ScanType": "1",
+                "ScanDuration": "1",
+                "ChannelPage": "1",
+                "MaxResults": "1",
+                "KeySource": "8",
+                "SecurityLevel": "1",
+                "KeyIdMode": "1",
+                "KeyIndex": "1"
+            }
+        },
+        "Length": {
+            "min": "0x13",
+            "max": "0x13"
+        },
+        "Cmd0": "0x22",
+        "Cmd1": "0x0C"
+    },
+    {
+        "Section": "3.5.1.12",
+        "Name": "MAC_ORPHAN_RSP",
+        "Description": "This command is sent by the host to response to the ORPHAN_IND.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ExtAddr": "8",
+                "AssocShortAddress": "2",
+                "AssociatedMember": "1"
+            }
+        },
+        "Length": {
+            "min": "0x0B",
+            "max": "0x0B"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x51"
+    },
+    {
+        "Section": "3.5.1.15",
+        "Name": "MAC_SET_RX_GAIN_REQ",
+        "Description": "This command is used to send a request to the device to set Rx gain.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Mode": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x22",
+        "Cmd1": "0x0F"
+    },
+    {
+        "Section": "3.5.2.2",
+        "Name": "MAC_ASSOCIATE_IND",
+        "Description": "This callback is called by the MAC to send (on behalf of the next higher layer) an associationindication message.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "DeviceExtendedAddress": "8",
+                "Capabilities": "1",
+                "KeySource": "8",
+                "SecurityLevel": "1",
+                "KeyIdMode": "1",
+                "KeyIndex": "1"
+            }
+        },
+        "Length": {
+            "min": "0x14",
+            "max": "0x14"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x81"
+    },
+    {
+        "Section": "3.5.2.3",
+        "Name": "MAC_ASSOCIATE_CNF",
+        "Description": "This callback is called by the MAC to send (on behalf of the next higher layer) an associationconfirmation message.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Status": "1",
+                "DeviceShortAddress": "2",
+                "KeySource": "8",
+                "SecurityLevel": "1",
+                "KeyIdMode": "1",
+                "KeyIndex": "1"
+            }
+        },
+        "Length": {
+            "min": "0x0E",
+            "max": "0x0E"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x82"
+    },
+    {
+        "Section": "3.5.2.4",
+        "Name": "MAC_BEACON_NOTIFY_IND",
+        "Description": "This callback is called by the MAC to send (on behalf of the next higher layer) a MAC beaconnotify indication.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "BSN": "1",
+                "Timestamp": "4",
+                "CoordinatorAddressMode": "1",
+                "CoordinatorExtendedAddress": "8",
+                "PanId": "2",
+                "SuperframeSpec": "2",
+                "LogicalChannel": "1",
+                "GTSPermit": "1",
+                "LinkQuality": "1",
+                "SecurityFailure": "1",
+                "KeySource": "8",
+                "SecurityLevel": "1",
+                "KeyIdMode": "1",
+                "KeyIndex": "1",
+                "PendingAddrSpec": "1"
+            }
+        },
+        "Length": {
+            "min": "0x24",
+            "max": "0xBC"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x83"
+    },
+    {
+        "Section": "3.5.2.5",
+        "Name": "MAC_DATA_CNF",
+        "Description": "This callback is called by the MAC to send (on behalf of the next higher layer) a MAC dataconfirmation.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Status": "1",
+                "Handle": "1",
+                "Timestamp": "4",
+                "Timestamp2": "2"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x08"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x84"
+    },
+    {
+        "Section": "3.5.2.8",
+        "Name": "MAC_DISASSOCIATE_CNF",
+        "Description": "This callback is called by the MAC to send (on behalf of the next higher layer) a MACdisassociate confirm.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Status": "1",
+                "DeviceAddrMode": "1",
+                "DeviceAddr": "8",
+                "DevicePanId": "2"
+            }
+        },
+        "Length": {
+            "min": "0x0C",
+            "max": "0x0C"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x87"
+    },
+    {
+        "Section": "3.5.2.9",
+        "Name": "MAC_ORPHAN_IND",
+        "Description": "This callback is called by the MAC to send (on behalf of the next higher layer) a MAC orphanindication.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "ExtendedAddr": "8",
+                "KeySource": "8",
+                "SecurityLevel": "1",
+                "KeyIdMode": "1",
+                "KeyIndex": "1"
+            }
+        },
+        "Length": {
+            "min": "0x13",
+            "max": "0x13"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x8A"
+    },
+    {
+        "Section": "3.5.2.10",
+        "Name": "MAC_POLL_CNF",
+        "Description": "This callback is called by the MAC to send (on behalf of the next higher layer) a MAC pollconfirmation.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Status": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x8B"
+    },
+    {
+        "Section": "3.5.2.11",
+        "Name": "MAC_SCAN_CNF",
+        "Description": "This callback is called by the MAC to send (on behalf of the next higher layer) a MAC scanconfirmation.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Status": "1",
+                "ED": "1",
+                "ScanType": "1",
+                "ChannelPage": "1",
+                "UnscannedChannelList": "4",
+                "ResultListCount": "1",
+                "ResultListMaxLength": "1",
+                "ResultList": "0-128"
+            }
+        },
+        "Length": {
+            "min": "0x0A",
+            "max": "0x8A"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x8C"
+    },
+    {
+        "Section": "3.5.2.12",
+        "Name": "MAC_COMM_STATUS_IND",
+        "Description": "This callback is called by the MAC to send (on behalf of the next higher layer) a MACcommunication indicator.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Status": "1",
+                "SrcAddr": "8",
+                "DstAddrMode": "1",
+                "DstAddr": "8",
+                "Timestamp": "4",
+                "DevicePanId": "2",
+                "Reason": "1",
+                "KeySource": "8",
+                "SecurityLevel": "1",
+                "KeyIdMode": "1",
+                "KeyIndex": "1"
+            }
+        },
+        "Length": {
+            "min": "0x24",
+            "max": "0x24"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x8D"
+    },
+    {
+        "Section": "3.5.2.13",
+        "Name": "MAC_START_CNF",
+        "Description": "This callback is called by the MAC to send (on behalf of the next higher layer) a MAC startconfirmation.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Status": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x8E"
+    },
+    {
+        "Section": "3.5.2.14",
+        "Name": "MAC_RX_ENABLE_CNF",
+        "Description": "This callback is called by the MAC to send (on behalf of the next higher layer) a MAC Rx enableconfirmation.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Status": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x8F"
+    },
+    {
+        "Section": "3.5.2.15",
+        "Name": "MAC_PURGE_CNF",
+        "Description": "This callback is called by the MAC to send (on behalf of the next higher layer) a MAC purgeconfirmation.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Status": "1",
+                "Handle": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x42",
+        "Cmd1": "0x9A"
+    },
+    {
+        "Section": "3.7.1.1",
+        "Name": "ZB_SYSTEM_RESET",
+        "Description": "This command will reset the device by using a soft reset (i.e. a jump to the reset vector) vice ahardware reset (i.e. watchdog reset.) This is especially useful in the CC2531, for instance, so thatthe USB host does not have to contend with the USB H/W resetting (and thus causing the USBhost to re-enumerate the device which can cause an open virtual serial port to hang.)",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x46",
+        "Cmd1": "0x09"
+    },
+    {
+        "Section": "3.7.1.3",
+        "Name": "ZB_PERMIT_JOINING_REQUEST",
+        "Description": "This command is used to control the joining permissions and thus allows or disallows new devicesfrom joining the network.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Destination": "2",
+                "Timeout": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x26",
+        "Cmd1": "0x08"
+    },
+    {
+        "Section": "3.7.1.5",
+        "Name": "ZB_ALLOW_BIND",
+        "Description": "This command puts the device into the Allow Binding Mode for a given period of time.  A peerdevice can establish a binding to a device in the Allow Binding Mode by calling zb_BindDevicewith a destination address of NULL.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Timeout": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x26",
+        "Cmd1": "0x02"
+    },
+    {
+        "Section": "3.7.1.6",
+        "Name": "ZB_SEND_DATA_REQUEST",
+        "Description": "This command initiates transmission of data to a peer device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Destination": "2",
+                "CommandId": "2",
+                "Handle": "1",
+                "Ack": "1",
+                "Radius": "1",
+                "Len": "1",
+                "Data": "0-84"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x5C"
+        },
+        "Cmd0": "0x26",
+        "Cmd1": "0x03"
+    },
+    {
+        "Section": "3.7.1.7",
+        "Name": "ZB_READ_CONFIGURATION",
+        "Description": "This command is used to get a configuration property from non-volatile memory.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ConfigId": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x26",
+        "Cmd1": "0x04"
+    },
+    {
+        "Section": "3.7.1.8",
+        "Name": "ZB_WRITE_CONFIGURATION",
+        "Description": "This command is used to write a Configuration Property to non-volatile memory.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ConfigId": "1",
+                "Len": "1",
+                "Value": "1-128"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x83"
+        },
+        "Cmd0": "0x26",
+        "Cmd1": "0x05"
+    },
+    {
+        "Section": "3.7.1.9",
+        "Name": "ZB_GET_DEVICE_INFO",
+        "Description": "This command retrieves a Device Information Property.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Param": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x26",
+        "Cmd1": "0x06"
+    },
+    {
+        "Section": "3.7.2.1",
+        "Name": "ZB_START_CONFIRM",
+        "Description": "This callback is called by the ZigBee stack after a start request operation completes.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Status": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x46",
+        "Cmd1": "0x80"
+    },
+    {
+        "Section": "3.7.2.2",
+        "Name": "ZB_BIND_CONFIRM",
+        "Description": "This callback is called by the ZigBee stack after a bind operation completes.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "CommandId": "2",
+                "Status": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x46",
+        "Cmd1": "0x81"
+    },
+    {
+        "Section": "3.7.2.3",
+        "Name": "ZB_ALLOW_BIND_CONFIRM",
+        "Description": "This callback indicates another device attempted to bind to this device.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Source": "2"
+            }
+        },
+        "Length": {
+            "min": "0x02",
+            "max": "0x02"
+        },
+        "Cmd0": "0x46",
+        "Cmd1": "0x82"
+    },
+    {
+        "Section": "3.7.2.5",
+        "Name": "ZB_RECEIVE_DATA_INDICATION",
+        "Description": "This callback is called asynchronously by the ZigBee stack to notify the application when data isreceived from a peer device.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Source": "2",
+                "Command": "2",
+                "Len": "2",
+                "Data": "0-84"
+            }
+        },
+        "Length": {
+            "min": "0x06",
+            "max": "0x06"
+        },
+        "Cmd0": "0x46",
+        "Cmd1": "0x87"
+    },
+    {
+        "Section": "3.7.2.6",
+        "Name": "ZB_FIND_DEVICE_CONFIRM",
+        "Description": "This callback is called by the ZigBee stack when a find device operation completes. SearchType = 0x01",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SearchType": "1",
+                "SearchKey": "2",
+                "Result": "8"
+            }
+        },
+        "Length": {
+            "min": "0x0B",
+            "max": "0x0B"
+        },
+        "Cmd0": "0x46",
+        "Cmd1": "0x85"
+    },
+    {
+        "Section": "3.8.1.1",
+        "Name": "SYS_RESET_REQ",
+        "Description": "This command is sent by the tester to reset the target device",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Type": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x41",
+        "Cmd1": "0x00"
+    },
+    {
+        "Section": "3.8.1.2",
+        "Name": "SYS_PING",
+        "Description": "This command issues PING requests to verify if a device is active and check the capability of thedevice.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x01"
+    },
+    {
+        "Section": "3.8.1.3",
+        "Name": "SYS_VERSION",
+        "Description": "This command is used to request for the device\u2019s version string.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x02"
+    },
+    {
+        "Section": "3.8.1.4",
+        "Name": "SYS_SET_EXTADDR",
+        "Description": "This command is used to set the extended address of the device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ExtAddress": "8"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x08"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x03"
+    },
+    {
+        "Section": "3.8.1.5",
+        "Name": "SYS_GET_EXTADDR",
+        "Description": "This command is used to get the extended address of the device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x04"
+    },
+    {
+        "Section": "3.8.1.6",
+        "Name": "SYS_RAM_READ",
+        "Description": "This command is used by the tester to read a single memory location in the target RAM. Thecommand accepts an address value and returns the memory value present in the target RAM at thataddress.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Address": "2",
+                "Len": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x05"
+    },
+    {
+        "Section": "3.8.1.7",
+        "Name": "SYS_RAM_WRITE",
+        "Description": "This command is used by the tester to write to a particular location in the target RAM. Thecommand accepts an address location and a memory value. The memory value is written to theaddress location in the target RAM.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Address": "2",
+                "Len": "1",
+                "Value": "1-128"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0x84"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x06"
+    },
+    {
+        "Section": "3.8.1.8",
+        "Name": "SYS_OSAL_NV_READ",
+        "Description": "This command is used by the tester to read a single memory item from the target non-volatilememory. The command accepts an attribute Id value and data offset and returns the memory valuepresent in the target for the specified attribute Id.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Id": "2",
+                "Offset": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x08"
+    },
+    {
+        "Section": "3.8.1.9",
+        "Name": "SYS_OSAL_NV_WRITE",
+        "Description": "This command is used by the tester to write to a particular item in non-volatile memory. Thecommand accepts an attribute Id, data offset, data length, and attribute value. The attribute value iswritten to the location specified for the attribute Id in the target.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Id": "2",
+                "Offset": "1",
+                "Len": "1",
+                "Value": "1-246"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0xFA"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x09"
+    },
+    {
+        "Section": "3.8.1.13",
+        "Name": "SYS_OSAL_START_TIMER",
+        "Description": "This command is used by the tester to start a timer event. The event will expired after the indicatedamount of time and a notification will be sent back to the tester.UsageSREQ:11112Length = 0x03Cmd0 = 0x21Cmd1 = 0x0AIdTimeoutAttributes:AttributeLength (byte)DescriptionId1The Id of the timer event (0-3)Timeout2Amount of time it will take before the event expired in milliseconds.SRSP:1111Length = 0x01Cmd0 = 0x61Cmd1 = 0x0AStatusAttributes:AttributeLength (byte)DescriptionStatus1Status is either Success (0) or Failure (1).3.8.1.14SYS_OSAL_STOP_TIMERDescription:This command is used by the tester to stop a timer event.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Id": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x0B"
+    },
+    {
+        "Section": "3.8.1.15",
+        "Name": "SYS_RANDOM",
+        "Description": "This command is used by the tester to get a random 16-bit number.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x0C"
+    },
+    {
+        "Section": "3.8.1.21",
+        "Name": "SYS_SET_TX_POWER",
+        "Description": "This command is used by the tester to set the target system radio transmit power. The returned TXpower is the actual setting applied to the radio \u2013 nearest characterized value for the specific radio.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "TX Power": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x14"
+    },
+    {
+        "Section": "3.8.1.23",
+        "Name": "SYS_ZDIAGS_CLEAR_STATS",
+        "Description": "This command is used to clear the statistics table. To clear data in NV (including the BootCounter) the clearNV flag shall be set to TRUE.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "clearNV": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x18"
+    },
+    {
+        "Section": "3.8.1.24",
+        "Name": "SYS_ZDIAGS_GET_STATS",
+        "Description": "This command is used to read a specific system (attribute) ID statistics and/or metrics value.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "AttributeID": "2"
+            }
+        },
+        "Length": {
+            "min": "0x02",
+            "max": "0x02"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x19"
+    },
+    {
+        "Section": "3.8.1.25",
+        "Name": "SYS_ZDIAGS_RESTORE_STATS_NV",
+        "Description": "This command is used to restore the statistics table from NV into the RAM table.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x1A"
+    },
+    {
+        "Section": "3.8.1.26",
+        "Name": "SYS_ZDIAGS_SAVE_STATS_TO_NV",
+        "Description": "This command is used to save the statistics table from RAM to NV.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x1B"
+    },
+    {
+        "Section": "3.8.1.27",
+        "Name": "SYS_NV_CREATE",
+        "Description": "This command is used to attempt to create an item in non-volatile memory.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "SysID": "1",
+                "ItemID": "2",
+                "SubID": "2",
+                "Length": "4"
+            }
+        },
+        "Length": {
+            "min": "0x09",
+            "max": "0x09"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x30"
+    },
+    {
+        "Section": "3.8.1.28",
+        "Name": "SYS_NV_DELETE",
+        "Description": "This command is used to attempt to delete an item in non-volatile memory.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "SysID": "1",
+                "ItemID": "2",
+                "SubID": "2"
+            }
+        },
+        "Length": {
+            "min": "0x05",
+            "max": "0x05"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x31"
+    },
+    {
+        "Section": "3.8.1.29",
+        "Name": "SYS_NV_LENGTH",
+        "Description": "This command is used to get the length of an item in non-volatile memory.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "SysID": "1",
+                "ItemID": "2",
+                "SubID": "2"
+            }
+        },
+        "Length": {
+            "min": "0x05",
+            "max": "0x05"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x32"
+    },
+    {
+        "Section": "3.8.1.30",
+        "Name": "SYS_NV_READ",
+        "Description": "This command is used to read an item in non-volatile memory.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "SysID": "1",
+                "ItemID": "2",
+                "SubID": "2",
+                "Offset": "2",
+                "Length": "1"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x08"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x33"
+    },
+    {
+        "Section": "3.8.1.31",
+        "Name": "SYS_NV_WRITE",
+        "Description": "This command is used to write an item in non-volatile memory",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "SysID": "1",
+                "ItemID": "2",
+                "SubID": "2",
+                "Offset": "2",
+                "Length": "2",
+                "Value": "0-240"
+            }
+        },
+        "Length": {
+            "min": "0x09",
+            "max": "0xF9"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x34"
+    },
+    {
+        "Section": "3.8.1.32",
+        "Name": "SYS_NV_UPDATE",
+        "Description": "This command is used to update an item in non-volatile memory",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "SysID": "1",
+                "ItemID": "2",
+                "SubID": "2",
+                "Length": "2",
+                "Value": "0-240"
+            }
+        },
+        "Length": {
+            "min": "0x07",
+            "max": "0xF7"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x35"
+    },
+    {
+        "Section": "3.8.1.33",
+        "Name": "SYS_NV_COMPACT",
+        "Description": "This command is used to compact the active page in non-volatile memory",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Threshold": "2"
+            }
+        },
+        "Length": {
+            "min": "0x02",
+            "max": "0x02"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x36"
+    },
+    {
+        "Section": "3.8.1.34",
+        "Name": "SYS_OSAL_NV_READ_EXT",
+        "Description": "This command is used by the tester to read a single memory item from the target non-volatilememory. The command accepts an attribute Id value and data offset and returns the memory valuepresent in the target for the specified attribute Id.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Id": "2",
+                "Offset": "2"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x08"
+    },
+    {
+        "Section": "3.8.1.35",
+        "Name": "SYS_OSAL_NV_WRITE_EXT",
+        "Description": "This command is used by the tester to write to a particular item in non-volatile memory. Thecommand accepts an attribute Id, data offset, data length, and attribute value. The attribute value iswritten to the location specified for the attribute Id in the target.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Id": "2",
+                "Offset": "2",
+                "Len": "1",
+                "Value": "1-246"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0xFA"
+        },
+        "Cmd0": "0x21",
+        "Cmd1": "0x09"
+    },
+    {
+        "Section": "3.8.2.2",
+        "Name": "SYS_OSAL_TIMER_EXPIRED",
+        "Description": "This callback is sent by the device to indicate that a specific timer has been expired.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Id": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x41",
+        "Cmd1": "0x81"
+    },
+    {
+        "Section": "3.10.1.1",
+        "Name": "UTIL_GET_DEVICE_INFO",
+        "Description": "This command is sent by the tester to retrieve the device info.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x00"
+    },
+    {
+        "Section": "3.10.1.2",
+        "Name": "UTIL_GET_NV_INFO",
+        "Description": "This command is used by the tester to read a block of parameters from non-volatile storage of thetarget device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x01"
+    },
+    {
+        "Section": "3.10.1.4",
+        "Name": "UTIL_SET_CHANNELS",
+        "Description": "This command is used to store a channel select bit-mask into non-volatile memory to be used thenext time the target device resets.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Channels": "4"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0x04"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x03"
+    },
+    {
+        "Section": "3.10.1.5",
+        "Name": "UTIL_SET_SECLEVEL",
+        "Description": "This command is used to store a security level value into non-volatile memory to be used the next time the target deviceresets.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "SecLevel": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x04"
+    },
+    {
+        "Section": "3.10.1.6",
+        "Name": "UTIL_SET_PRECFGKEY",
+        "Description": "This command is used to store a pre-configured key array into non-volatile memory to be used thenext time the target device resets.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "PreCfgKey": "16"
+            }
+        },
+        "Length": {
+            "min": "0x10",
+            "max": "0x10"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x05"
+    },
+    {
+        "Section": "3.10.1.8",
+        "Name": "UTIL_KEY_EVENT",
+        "Description": "Sends key and shift codes to the application that registered for key events. The keys parameter is abit mask, allowing for multiple keys in a single command. The return status indicates success ifthe command is processed by a registered key handler, not whether the key code was used. Not allapplications support all key or shift codes but there is no indication when a key code is dropped.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Keys": "1",
+                "Shift": "1"
+            }
+        },
+        "Length": {
+            "min": "0x02",
+            "max": "0x02"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x07"
+    },
+    {
+        "Section": "3.10.1.9",
+        "Name": "UTIL_TIME_ALIVE",
+        "Description": "This command is used by the tester to get the board\u2019s time alive.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x09"
+    },
+    {
+        "Section": "3.10.1.10",
+        "Name": "UTIL_LED_CONTROL",
+        "Description": "This command is used by the tester to control the LEDs on the board.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "LedId": "1",
+                "Mode": "1"
+            }
+        },
+        "Length": {
+            "min": "0x02",
+            "max": "0x02"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x0A"
+    },
+    {
+        "Section": "3.10.1.12",
+        "Name": "UTIL_DATA_REQ",
+        "Description": "This command is used by the tester to effect a MAC MLME Poll Request.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "SecurityUse": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x11"
+    },
+    {
+        "Section": "3.10.1.14",
+        "Name": "UTIL_SRC_MATCH_ADD_ENTRY",
+        "Description": "This command is used to add a short or extended address to the source address table.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "AddressMode": "1",
+                "Address": "8"
+            }
+        },
+        "Length": {
+            "min": "0x0B",
+            "max": "0x0B"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x21"
+    },
+    {
+        "Section": "3.10.1.15",
+        "Name": "UTIL_SRC_MATCH_DEL_ENTRY",
+        "Description": "This command is used to delete a short or extended address from the source address table.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "AddressMode": "1",
+                "Address": "8",
+                "PanId": "2"
+            }
+        },
+        "Length": {
+            "min": "0x0B",
+            "max": "0x0B"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x22"
+    },
+    {
+        "Section": "3.10.1.16",
+        "Name": "UTIL_SRC_MATCH_CHECK_SRC_ADDR",
+        "Description": "This command is used to check if a short or extended address is in the source address table.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "AddressMode": "1",
+                "Address": "8",
+                "PanId": "2"
+            }
+        },
+        "Length": {
+            "min": "0x0B",
+            "max": "0x0B"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x23"
+    },
+    {
+        "Section": "3.10.1.17",
+        "Name": "UTIL_SRC_MATCH_ACK_ALL_PENDING",
+        "Description": "This command is used to enable/disable acknowledging all packets with pending bit set.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Option": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x24"
+    },
+    {
+        "Section": "3.10.1.18",
+        "Name": "UTIL_SRC_MATCH_CHECK_ALL_PENDING",
+        "Description": "This command is used to check if acknowledging all packets with pending bit set is enabled.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x25"
+    },
+    {
+        "Section": "3.10.1.19",
+        "Name": "UTIL_ADDRMGR_EXT_ADDR_LOOKUP",
+        "Description": "This command is a proxy call to the AddrMgrEntryLookupExt() function.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ExtAddr": "8"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x08"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x40"
+    },
+    {
+        "Section": "3.10.1.21",
+        "Name": "UTIL_APSME_LINK_KEY_DATA_GET",
+        "Description": "This command retrieves APS link key data, Tx and Rx frame counters.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ExtAddr": "8"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x08"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x44"
+    },
+    {
+        "Section": "3.10.1.22",
+        "Name": "UTIL_APSME_LINK_KEY_NV_ID_GET",
+        "Description": "This command is a proxy call to the APSME_LinkKeyNvIdGet() function.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ExtAddr": "8"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x08"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x45"
+    },
+    {
+        "Section": "3.10.1.23",
+        "Name": "UTIL_APSME_REQUEST_KEY_CMD",
+        "Description": "This command is used to send a request key to the Trust Center from an originator device whowants to exchange messages with a partner device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "PartnerAddr": "2"
+            }
+        },
+        "Length": {
+            "min": "0x02",
+            "max": "0x02"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x4B"
+    },
+    {
+        "Section": "3.10.1.24",
+        "Name": "UTIL_ASSOC_COUNT",
+        "Description": "This command is a proxy call to the AssocCount() function.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "StartRelation": "1",
+                "EndRelation": "1"
+            }
+        },
+        "Length": {
+            "min": "0x02",
+            "max": "0x02"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x48"
+    },
+    {
+        "Section": "3.10.1.25",
+        "Name": "UTIL_ASSOC_FIND_DEVICE",
+        "Description": "This command is a proxy call to the AssocFindDevice() function.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Number": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x49"
+    },
+    {
+        "Section": "3.10.1.26",
+        "Name": "UTIL_ASSOC_GET_WITH_ADDRESS",
+        "Description": "This command is a proxy call to the AssocGetWithAddress() function.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ExtAddr": "8",
+                "NwkAddr": "2"
+            }
+        },
+        "Length": {
+            "min": "0x0A",
+            "max": "0x0A"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x4A"
+    },
+    {
+        "Section": "3.10.1.27",
+        "Name": "UTIL_BIND_ADD_ENTRY",
+        "Description": "This command is a proxy call to the bindAddEntry() function.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "AddrMode": "1",
+                "DstAddr": "8",
+                "DstEndpoint": "1",
+                "NumClusterIds": "1",
+                "ClusterIds": "2-8"
+            }
+        },
+        "Length": {
+            "min": "0x0D",
+            "max": "0x13"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x4D"
+    },
+    {
+        "Section": "3.10.1.28",
+        "Name": "UTIL_ZCL_KEY_EST_INIT_EST",
+        "Description": "This command is a proxy call to zclGeneral_KeyEstablish_InitiateKeyEstablishment().",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "TaskId": "1",
+                "SeqNum": "1",
+                "EndPoint": "1",
+                "AddrMode": "1",
+                "Addr": "8"
+            }
+        },
+        "Length": {
+            "min": "0x0C",
+            "max": "0x0C"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x80"
+    },
+    {
+        "Section": "3.10.1.29",
+        "Name": "UTIL_ZCL_KEY_EST_SIGN",
+        "Description": "This command is a proxy call to zclGeneral_KeyEstablishment_ECDSASign().",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "InputLen": "1",
+                "Input": "1"
+            }
+        },
+        "Length": {
+            "min": "0x0C",
+            "max": "0x0C"
+        },
+        "Cmd0": "0x27",
+        "Cmd1": "0x81"
+    },
+    {
+        "Section": "3.10.2.1",
+        "Name": "UTIL_SYNC_REQ",
+        "Description": "This is an asynchronous request/response handshake.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x47",
+        "Cmd1": "0xE0"
+    },
+    {
+        "Section": "3.12.1.1",
+        "Name": "ZDO_NWK_ADDR_REQ",
+        "Description": "This message will request the device to send a \u201cNetwork Address Request\u201d.  This message sends abroadcast message looking for a 16 bit address with a known 64 bit IEEE address.  You mustsubscribe to \u201cZDO Network Address Response\u201d to receive the response to this message. Checksection 3.0.1.7 for more details on callback subscription. The response message listed below onlyindicates whether or not the message was received properly.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "IEEEAddress": "8",
+                "ReqType": "1",
+                "StartIndex": "1"
+            }
+        },
+        "Length": {
+            "min": "0x0A",
+            "max": "0x0A"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x00"
+    },
+    {
+        "Section": "3.12.1.2",
+        "Name": "ZDO_IEEE_ADDR_REQ",
+        "Description": "This command will request a device\u2019s IEEE 64-bit address.  You must subscribe to \u201cZDO IEEEAddress Response\u201d to receive the data response to this message.  The response message listedbelow only indicates whether or not the message was received properly.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ShortAddr": "2",
+                "ReqType": "1",
+                "StartIndex": "1"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0x04"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x01"
+    },
+    {
+        "Section": "3.12.1.5",
+        "Name": "ZDO_SIMPLE_DESC_REQ",
+        "Description": "This command is generated to inquire as to the Simple Descriptor of the destination device\u2019sEndpoint.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "NWKAddrOfInterest": "2",
+                "Endpoint": "1"
+            }
+        },
+        "Length": {
+            "min": "0x05",
+            "max": "0x05"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x04"
+    },
+    {
+        "Section": "3.12.1.6",
+        "Name": "ZDO_ACTIVE_EP_REQ",
+        "Description": "This command is generated to request a list of active endpoint from the destination device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "NWKAddrOfInterest": "2"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0x04"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x05"
+    },
+    {
+        "Section": "3.12.1.7",
+        "Name": "ZDO_MATCH_DESC_REQ",
+        "Description": "This command is generated to request the device match descriptor.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "NwkAddrOfInterest": "2",
+                "ProfileId": "2",
+                "NumInClusters": "1",
+                "InClusterList": "0-32",
+                "NumOutClusters": "1",
+                "OutClusterList": "0-32"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x48"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x06"
+    },
+    {
+        "Section": "3.12.1.8",
+        "Name": "ZDO_COMPLEX_DESC_REQ",
+        "Description": "This command is generated to request for the destination device\u2019s complex descriptor.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "NWKAddrOfInterest": "2"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0x04"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x07"
+    },
+    {
+        "Section": "3.12.1.9",
+        "Name": "ZDO_USER_DESC_REQ",
+        "Description": "This command is generated to request for the destination device\u2019s user descriptor.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "NWKAddrOfInterest": "2"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0x04"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x08"
+    },
+    {
+        "Section": "3.12.1.10",
+        "Name": "ZDO_END_DEVICE_ANNCE",
+        "Description": "This command will cause the device to issue an \u201cEnd device announce\u201d broadcast packet to thenetwork. This is typically used by an end-device to announce itself to the network.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "NwkAddr": "2",
+                "IEEEAddr": "8",
+                "Capabilites": "1"
+            }
+        },
+        "Length": {
+            "min": "0x0B",
+            "max": "0x0B"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x0A"
+    },
+    {
+        "Section": "3.12.1.11",
+        "Name": "ZDO_USER_DESC_SET",
+        "Description": "This command is generated to write a User Descriptor value to the targeted device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "NWKAddrOfInterest": "2",
+                "Len": "1",
+                "UserDescriptor": "0-16"
+            }
+        },
+        "Length": {
+            "min": "0x05",
+            "max": "0x15"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x0B"
+    },
+    {
+        "Section": "3.12.1.12",
+        "Name": "ZDO_SERVER_DISC_REQ",
+        "Description": "The command is used for local device to discover the location of a particular system server orservers as indicated by the ServerMask parameter. The destination addressing on this request is\u2018broadcast to all RxOnWhenIdle devices\u2019.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ServerMask": "2"
+            }
+        },
+        "Length": {
+            "min": "0x02",
+            "max": "0x02"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x0C"
+    },
+    {
+        "Section": "3.12.1.13",
+        "Name": "ZDO_END_DEVICE_BIND_REQ",
+        "Description": "This command is generated to request an End Device Bind with the destination device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "LocalCoordinator": "2",
+                "Endpoint": "1",
+                "ProfileId": "2",
+                "NumInClusters": "1",
+                "InClusterList": "0-32",
+                "NumOutClusters": "1",
+                "OutClusterList": "0-32"
+            }
+        },
+        "Length": {
+            "min": "0x09",
+            "max": "0x49"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x20"
+    },
+    {
+        "Section": "3.12.1.14",
+        "Name": "ZDO_BIND_REQ",
+        "Description": "This command is generated to request a Bind.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "SrcAddress": "8",
+                "SrcEndpoint": "1",
+                "ClusterId": "2",
+                "/": "1"
+            }
+        },
+        "Length": {
+            "min": "0x10",
+            "max": "0x17"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x21"
+    },
+    {
+        "Section": "3.12.1.15",
+        "Name": "ZDO_UNBIND_REQ",
+        "Description": "This command is generated to request a un-bind.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "SrcAddress": "8",
+                "SrcEndpoint": "1",
+                "ClusterId": "2",
+                "/": "1"
+            }
+        },
+        "Length": {
+            "min": "0x10",
+            "max": "0x17"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x22"
+    },
+    {
+        "Section": "3.12.1.16",
+        "Name": "ZDO_MGMT_NWK_DISC_REQ",
+        "Description": "This command is generated to request the destination device to perform a network discovery.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "ScanChannels": "4",
+                "ScanDuration": "1",
+                "StartIndex": "1"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x08"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x30"
+    },
+    {
+        "Section": "3.12.1.17",
+        "Name": "ZDO_MGMT_LQI_REQ",
+        "Description": "This command is generated to request the destination device to perform a LQI query of otherdevices in the network.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "StartIndex": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x31"
+    },
+    {
+        "Section": "3.12.1.18",
+        "Name": "ZDO_MGMT_RTG_REQ",
+        "Description": "This command is generated to request the Routing Table of the destination device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "StartIndex": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x32"
+    },
+    {
+        "Section": "3.12.1.19",
+        "Name": "ZDO_MGMT_BIND_REQ",
+        "Description": "This command is generated to request the Binding Table of the destination device.UsageSREQ:Byte: 11121Length = 0x03Cmd0 = 0x25Cmd1 = 0x33DstAddrStartIndexAttributes:AttributeLength (byte)DescriptionDstAddr2Specifies the network address of the device being queried.StartIndex1Specifies where to start in the response array list.  The result may contain more entriesthan can be reported, so this field allows the user to retrieve the responses anywhere inthe array list.SRSP:1111Length = 0x01Cmd0 = 0x65Cmd1 = 0x33StatusAttributes:AttributeLength (byte)DescriptionStatus1Status is either Success (0) or Failure (1).3.12.1.20 ZDO_MGMT_LEAVE_REQDescription:This command is generated to request a Management Leave Request for the target device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "DeviceAddr": "8",
+                "RemoveChildren_Rejoin": "1"
+            }
+        },
+        "Length": {
+            "min": "0x0B",
+            "max": "0x0B"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x34"
+    },
+    {
+        "Section": "3.12.1.21",
+        "Name": "ZDO_MGMT_DIRECT_JOIN_REQ",
+        "Description": "This command is generated to request the Management Direct Join Request of a designateddevice.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "DeviceAddr": "8",
+                "CapInfo": "1"
+            }
+        },
+        "Length": {
+            "min": "0x0B",
+            "max": "0x0B"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x35"
+    },
+    {
+        "Section": "3.12.1.22",
+        "Name": "ZDO_MGMT_PERMIT_JOIN_REQ",
+        "Description": "This command is generated to set the Permit Join for the destination device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "AddrMode": "1",
+                "DstAddr": "2",
+                "Duration": "1",
+                "TCSignificance": "1"
+            }
+        },
+        "Length": {
+            "min": "0x05",
+            "max": "0x05"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x36"
+    },
+    {
+        "Section": "3.12.1.23",
+        "Name": "ZDO_MGMT_NWK_UPDATE_REQ",
+        "Description": "This command is provided to allow updating of network configuration parameters or to requestinformation from devices on network conditions in the local operating environment.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "DstAddr": "2",
+                "DstAddrMode": "1",
+                "ChannelMask": "4",
+                "ScanDuration": "1",
+                "ScanCount": "1",
+                "NwkManagerAddr": "2"
+            }
+        },
+        "Length": {
+            "min": "0x0B",
+            "max": "0x0B"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x37"
+    },
+    {
+        "Section": "3.12.1.24",
+        "Name": "ZDO_MSG_CB_REGISTER",
+        "Description": "This command registers for a ZDO callback (see reference [3], \u201c6. ZDO Message Requests\u201d forexample usage).",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ClusterId": "2"
+            }
+        },
+        "Length": {
+            "min": "0x02",
+            "max": "0x02"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x3E"
+    },
+    {
+        "Section": "3.12.1.25",
+        "Name": "ZDO_MSG_CB_REMOVE",
+        "Description": "This command removes a registration for a ZDO callback (see reference [3], \u201c6. ZDO MessageRequests\u201d for example usage).",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ClusterId": "2"
+            }
+        },
+        "Length": {
+            "min": "0x02",
+            "max": "0x02"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x3F"
+    },
+    {
+        "Section": "3.12.1.26",
+        "Name": "ZDO_STARTUP_FROM_APP",
+        "Description": "This command starts the device in the network.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "StartDelay": "2"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x40"
+    },
+    {
+        "Section": "3.12.1.27",
+        "Name": "ZDO_STARTUP_FROM_APP_EX",
+        "Description": "Extended version of ZDO to indicate to router devices to create a distributed network.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "StartDelay": "1",
+                "Mode": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x54"
+    },
+    {
+        "Section": "3.12.1.28",
+        "Name": "ZDO_SET_LINK_KEY",
+        "Description": "This command sets the application link key for a given device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "ShortAddr": "2",
+                "IEEEAddr": "8",
+                "LinkKeyData": "16"
+            }
+        },
+        "Length": {
+            "min": "0x1A",
+            "max": "0x1A"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x23"
+    },
+    {
+        "Section": "3.12.1.29",
+        "Name": "ZDO_REMOVE_LINK_KEY",
+        "Description": "This command removes the application link key of a given device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "IEEEAddr": "8"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x08"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x24"
+    },
+    {
+        "Section": "3.12.1.30",
+        "Name": "ZDO_GET_LINK_KEY",
+        "Description": "This command retrieves the application link key of a given device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "IEEEAddr": "8"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x08"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x25"
+    },
+    {
+        "Section": "3.12.1.31",
+        "Name": "ZDO_NWK_DISCOVERY_REQ",
+        "Description": "This command is used to initiate a network discovery (active scan).",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Scan Channels": "4",
+                "Scan Duration": "1"
+            }
+        },
+        "Length": {
+            "min": "0x05",
+            "max": "0x05"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x26"
+    },
+    {
+        "Section": "3.12.1.32",
+        "Name": "ZDO_JOIN_REQ",
+        "Description": "This command is used to request the device to join itself to a parent device on a network.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Logical Channel": "1",
+                "Pan ID": "2",
+                "Extended": "8"
+            }
+        },
+        "Length": {
+            "min": "0x0F",
+            "max": "0x0F"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x27"
+    },
+    {
+        "Section": "3.12.1.33",
+        "Name": "ZDO_SET_REJOIN_PARAMETERS",
+        "Description": "This command is used to set rejoin backoff duration and rejoin scan duration for an end device",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Backoff Duration": "4",
+                "Scan Duration": "4"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x08"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x26"
+    },
+    {
+        "Section": "3.12.1.35",
+        "Name": "ZDO_SEC_ENTRY_LOOKUP_EXT",
+        "Description": "This command handles the ZDO security entry lookup extended extension message.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Extended Adress": "8",
+                "Entry": "5"
+            }
+        },
+        "Length": {
+            "min": "0x013",
+            "max": "0x013"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x43"
+    },
+    {
+        "Section": "3.12.1.36",
+        "Name": "ZDO_SEC_DEVICE_REMOVE",
+        "Description": "This command handles the ZDO security remove device extended extension message.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Extended Adress": "8"
+            }
+        },
+        "Length": {
+            "min": "0x08",
+            "max": "0x08"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x44"
+    },
+    {
+        "Section": "3.12.1.37",
+        "Name": "ZDO_EXT_ROUTE_DISC",
+        "Description": "This command handles the ZDO route discovery extension message.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Destination Address": "2",
+                "Options": "1",
+                "Radius": "1"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0x04"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x45"
+    },
+    {
+        "Section": "3.12.1.38",
+        "Name": "ZDO_EXT_ROUTE_CHECK",
+        "Description": "This command handles the ZDO route check extension message.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Destination Address": "2",
+                "RTStatus": "1",
+                "Options": "1"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0x04"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x46"
+    },
+    {
+        "Section": "3.12.1.39",
+        "Name": "ZDO_EXT_REMOVE_GROUP",
+        "Description": "This command handles the ZDO extended remove group extension message.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Endpoint": "1",
+                "GroupID": "2"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x47"
+    },
+    {
+        "Section": "3.12.1.40",
+        "Name": "ZDO_EXT_REMOVE_ALL_GROUP",
+        "Description": "This command handles the ZDO extended remove all group extension message.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Endpoint": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x48"
+    },
+    {
+        "Section": "3.12.1.41",
+        "Name": "ZDO_EXT_FIND_ALL_GROUPS_ENDPOINT",
+        "Description": "This command handles the ZDO extension find all groups for endpoint message",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Endpoint": "1",
+                "GroupList": "2"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x49"
+    },
+    {
+        "Section": "3.12.1.42",
+        "Name": "ZDO_EXT_FIND_GROUP",
+        "Description": "This command handles the ZDO extension find group message",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Endpoint": "1",
+                "GroupID": "2"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x4A"
+    },
+    {
+        "Section": "3.12.1.43",
+        "Name": "ZDO_EXT_ADD_GROUP",
+        "Description": "This command handles the ZDO extension add group message.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Endpoint": "1",
+                "GroupID": "2",
+                "GroupName": "16"
+            }
+        },
+        "Length": {
+            "min": "0x013",
+            "max": "0x013"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x4B"
+    },
+    {
+        "Section": "3.12.1.44",
+        "Name": "ZDO_EXT_COUNT_ALL_GROUPS",
+        "Description": "This command handles the ZDO extension count all groups message.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x4C"
+    },
+    {
+        "Section": "3.12.1.45",
+        "Name": "ZDO_EXT_RX_IDLE",
+        "Description": "This command handles the ZDO extension Get/Set RxOnIdle to ZMac message",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "SetFlag": "1",
+                "SetValue": "1"
+            }
+        },
+        "Length": {
+            "min": "0x02",
+            "max": "0x02"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x4D"
+    },
+    {
+        "Section": "3.12.1.46",
+        "Name": "ZDO_EXT_UPDATE_NWK_KEY",
+        "Description": "This command handles the ZDO security update network key extension message.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Destination Address": "2",
+                "KeySeqNum": "1",
+                "Key": "128"
+            }
+        },
+        "Length": {
+            "min": "0x083",
+            "max": "0x083"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x4E"
+    },
+    {
+        "Section": "3.12.1.47",
+        "Name": "ZDO_EXT_SWITCH_NWK_KEY",
+        "Description": "This command handles the ZDO security switch network key extension message.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Destination Address": "2",
+                "KeySeqNum": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x4F"
+    },
+    {
+        "Section": "3.12.1.49",
+        "Name": "ZDO_EXT_SEC_APS_REMOVE_REQ",
+        "Description": "This command handles the ZDO extension Security Manager APS Remove Request message.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "NWK Address": "2",
+                "Extended Address": "8",
+                "Parent address": "2"
+            }
+        },
+        "Length": {
+            "min": "0x0c",
+            "max": "0x0c"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x51"
+    },
+    {
+        "Section": "3.12.1.50",
+        "Name": "ZDO_FORCE_CONCENTRATOR_CHANGE",
+        "Description": "This command forces a network concentrator change by resetting   zgConcentratorEnable andzgConcentratorDiscoveryTime from NV and set nwk event.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x52"
+    },
+    {
+        "Section": "3.12.1.51",
+        "Name": "ZDO_EXT_SET_PARAMS",
+        "Description": "This command set parameters not settable through NV.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "useMulticast": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x25",
+        "Cmd1": "0x53"
+    },
+    {
+        "Section": "3.12.2.3",
+        "Name": "ZDO_NODE_DESC_RSP",
+        "Description": "This callback message is in response to the ZDO Node Descriptor Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1",
+                "NwkAddr": "2",
+                "LogicalType/ ComplexDescAvailable/ UserDescAvailable": "1",
+                "APSFlags/ FrequencyBand": "1",
+                "MACCapabilityFlags": "1",
+                "ManufacturerCode": "2",
+                "MaxBufferSize": "1",
+                "MaxTransferSize": "2",
+                "ServerMask": "2",
+                "MaxOutTransferSize": "2",
+                "DescriptorCapabilities": "1"
+            }
+        },
+        "Length": {
+            "min": "0x12",
+            "max": "0x12"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0x82"
+    },
+    {
+        "Section": "3.12.2.4",
+        "Name": "ZDO_POWER_DESC_RSP",
+        "Description": "This callback message is in response to the ZDO Power Descriptor Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1",
+                "NwkAddr": "2",
+                "CurrentPowerMode/AvailablePowerSources": "1",
+                "CurrentPowerSource/CurrentPowerSourceLevel": "1"
+            }
+        },
+        "Length": {
+            "min": "0x07",
+            "max": "0x07"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0x83"
+    },
+    {
+        "Section": "3.12.2.6",
+        "Name": "ZDO_ACTIVE_EP_RSP",
+        "Description": "This callback message is in response to the ZDO Active Endpoint Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1",
+                "NwkAddr": "2",
+                "ActiveEPCount": "1",
+                "ActiveEPList": "0-77"
+            }
+        },
+        "Length": {
+            "min": "0x06",
+            "max": "0x53"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0x85"
+    },
+    {
+        "Section": "3.12.2.8",
+        "Name": "ZDO_COMPLEX_DESC_RSP",
+        "Description": "This callback message is in response to the ZDO Complex Descriptor Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1",
+                "NwkAddr": "2",
+                "ComplexLength": "1",
+                "ComplexList": "0-77"
+            }
+        },
+        "Length": {
+            "min": "0x06",
+            "max": "0x53"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0x87"
+    },
+    {
+        "Section": "3.12.2.9",
+        "Name": "ZDO_USER_DESC_RSP",
+        "Description": "This callback message is in response to the ZDO User Descriptor Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1",
+                "NwkAddr": "2",
+                "Len": "1",
+                "UserDescriptor": "0-77"
+            }
+        },
+        "Length": {
+            "min": "0x06",
+            "max": "0x16"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0x88"
+    },
+    {
+        "Section": "3.12.2.10",
+        "Name": "ZDO_USER_DESC_CONF",
+        "Description": "This confirmation notifies the user when the device receives a user descriptor.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1",
+                "NwkAddr": "2"
+            }
+        },
+        "Length": {
+            "min": "0x05",
+            "max": "0x05"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0x89"
+    },
+    {
+        "Section": "3.12.2.11",
+        "Name": "ZDO_SERVER_DISC_RSP",
+        "Description": "This callback message is in response to the ZDO System Service Discovery Request. Uponreceiving the request, remote devices shall compare the ServerMask parameter to the Server Maskfield in their own Node descriptor. If no bits are found to match, no action is taken.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1",
+                "ServerMask": "2"
+            }
+        },
+        "Length": {
+            "min": "0x05",
+            "max": "0x05"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0x8A"
+    },
+    {
+        "Section": "3.12.2.13",
+        "Name": "ZDO_BIND_RSP",
+        "Description": "This callback message is in response to the ZDO Bind Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xA1"
+    },
+    {
+        "Section": "3.12.2.14",
+        "Name": "ZDO_UNBIND_RSP",
+        "Description": "This callback message is in response to the ZDO Unbind Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xA2"
+    },
+    {
+        "Section": "3.12.2.16",
+        "Name": "ZDO_MGMT_LQI_RSP",
+        "Description": "This callback message is in response to the ZDO Management LQI Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1",
+                "NeighborTableEntries": "1",
+                "StartIndex": "1",
+                "NeighborTableListCount": "1",
+                "NeighborTableListRecords": "0-66"
+            }
+        },
+        "Length": {
+            "min": "0x06",
+            "max": "0x48"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xB1"
+    },
+    {
+        "Section": "3.12.2.17",
+        "Name": "ZDO_MGMT_RTG_RSP",
+        "Description": "This callback message is in response to the ZDO Management Routing Table Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1",
+                "RoutingTableEntries": "1",
+                "StartIndex": "1",
+                "RoutingTableListCount": "1",
+                "RoutingTableListRecords": "0-75"
+            }
+        },
+        "Length": {
+            "min": "0x06",
+            "max": "0x51"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xB2"
+    },
+    {
+        "Section": "3.12.2.18",
+        "Name": "ZDO_MGMT_BIND_RSP",
+        "Description": "This callback message is in response to the ZDO Management Binding Table Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1",
+                "BindingTableEntries": "1",
+                "StartIndex": "1",
+                "BindingTableListCount": "1",
+                "BindingTableListRecords": "0-75"
+            }
+        },
+        "Length": {
+            "min": "0x06",
+            "max": "0x51"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xB3"
+    },
+    {
+        "Section": "3.12.2.19",
+        "Name": "ZDO_MGMT_LEAVE_RSP",
+        "Description": "This callback message is in response to the ZDO Management Leave Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xB4"
+    },
+    {
+        "Section": "3.12.2.20",
+        "Name": "ZDO_MGMT_DIRECT_JOIN_RSP",
+        "Description": "This callback message is in response to the ZDO Management Direct Join Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xB5"
+    },
+    {
+        "Section": "3.12.2.21",
+        "Name": "ZDO_MGMT_PERMIT_JOIN_RSP",
+        "Description": "This callback message is in response to the ZDO Management Permit Join Request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xB6"
+    },
+    {
+        "Section": "3.12.2.22",
+        "Name": "ZDO_STATE_CHANGE_IND",
+        "Description": "This callback message indicates the ZDO state change.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "State": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xC0"
+    },
+    {
+        "Section": "3.12.2.24",
+        "Name": "ZDO_MATCH_DESC_RSP_SENT",
+        "Description": "This callback indicates that Match Descriptor Response has been sent.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "NwkAddr": "2",
+                "NumInClusters": "1",
+                "InClusterList": "0-32",
+                "NumOutClusters": "1",
+                "OutClusterList": "0-32"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0x44"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xC2"
+    },
+    {
+        "Section": "3.12.2.25",
+        "Name": "ZDO_STATUS_ERROR_RSP",
+        "Description": "This message is the default message for error status.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "Status": "1"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0x44"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xC3"
+    },
+    {
+        "Section": "3.12.2.26",
+        "Name": "ZDO_SRC_RTG_IND",
+        "Description": "This message is an indication to inform host device the receipt of a source route to a given device.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "dstAddr": "2",
+                "Relay Count (N)": "1",
+                "Relay List": "2N"
+            }
+        },
+        "Length": {
+            "min": "0x04",
+            "max": "0x44"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xC4"
+    },
+    {
+        "Section": "3.12.2.27",
+        "Name": "ZDO_BEACON_NOTIFY_IND",
+        "Description": "This message is an indication to inform host device the receipt of a beacon notification.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "BeaconCount": "1",
+                "BeaconList": "N*21"
+            }
+        },
+        "Length": {
+            "min": "21",
+            "max": "21"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xC5"
+    },
+    {
+        "Section": "3.12.2.28",
+        "Name": "ZDO_JOIN_CNF",
+        "Description": "This message is an indication to inform host device the result of a ZDO join request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "status": "1",
+                "Device Address": "2",
+                "Parent Address": "2"
+            }
+        },
+        "Length": {
+            "min": "0x05",
+            "max": "0x05"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xC6"
+    },
+    {
+        "Section": "3.12.2.29",
+        "Name": "ZDO_NWK_DISCOVERY_CNF",
+        "Description": "This message is an indication to inform host device the completion of network discovery scan.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "status": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xC7"
+    },
+    {
+        "Section": "3.12.2.30",
+        "Name": "ZDO_LEAVE_IND",
+        "Description": "This message is an indication to inform the host of a device leaving the network.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "ExtAddr": "8",
+                "Request": "1",
+                "Remove": "1",
+                "Rejoin": "1"
+            }
+        },
+        "Length": {
+            "min": "0x0D",
+            "max": "0x0D"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xC9"
+    },
+    {
+        "Section": "3.12.2.31",
+        "Name": "ZDO_MSG_CB_INCOMING",
+        "Description": "This message is a ZDO callback for a Cluster Id that the host requested to receive with a ZDO_MSG_CB_REGISTER request.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "WasBroadcast": "1",
+                "ClusterId": "2",
+                "SecurityUse": "1",
+                "SeqNum": "1",
+                "MacDstAddr": "2",
+                "Data": "0-Max MTU length"
+            }
+        },
+        "Length": {
+            "min": "0x09",
+            "max": "0x09"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xFF"
+    },
+    {
+        "Section": "3.12.2.33",
+        "Name": "ZDO_PERMIT_JOIN_IND",
+        "Description": "This message is a ZDO callback for Permit Join Indication.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "PermitJoinDuration": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xCB"
+    },
+    {
+        "Section": "3.13.1.2",
+        "Name": "APP_CNF_SET_DEFAULT_REMOTE_ENDDEVICE_TIMEOUT",
+        "Description": "_TIMEOUTDescription:Sets the default value used by parent device to expire legacy child devices.Usage:",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Timeout Index": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x2F",
+        "Cmd1": "0x01"
+    },
+    {
+        "Section": "3.13.1.4",
+        "Name": "APP_CNF_SET_ALLOWREJOIN_TC_POLICY",
+        "Description": "Sets the AllowRejoin TC policy.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Allow Rejoin": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x2F",
+        "Cmd1": "0x03"
+    },
+    {
+        "Section": "3.13.1.5",
+        "Name": "APP_CNF_BDB_START_COMMISSIONING",
+        "Description": "Set the commissioning methods to be executed. Initialization of BDB is executed with this call,regardless of its parameters.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "Commissioning mode": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x2F",
+        "Cmd1": "0x05"
+    },
+    {
+        "Section": "3.13.1.6",
+        "Name": "APP_CNF_BDB_SET_CHANNEL",
+        "Description": "Sets BDB primary or secondary channel masks.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "isPrimary": "1",
+                "Channel": "4"
+            }
+        },
+        "Length": {
+            "min": "0x05",
+            "max": "0x05"
+        },
+        "Cmd0": "0x2F",
+        "Cmd1": "0x08"
+    },
+    {
+        "Section": "3.13.1.7",
+        "Name": "APP_CNF_BDB_ADD_INSTALLCODE",
+        "Description": "Add a preconfigured key (plain key or IC) to Trust Center device.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "installCodeFormat": "1",
+                "IEEEAddress": "8",
+                "installCode": "16-18"
+            }
+        },
+        "Length": {
+            "min": "0x19",
+            "max": "0x1B"
+        },
+        "Cmd0": "0x2F",
+        "Cmd1": "0x04"
+    },
+    {
+        "Section": "3.13.1.9",
+        "Name": "APP_CNF_BDB_SET_JOINUSESINSTALLCODEKEY",
+        "Description": "Sets the policy to mandate or not the usage of an Install Code upon joining.",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "bdbJoinUsesInstallCodeKey": "1"
+            }
+        },
+        "Length": {
+            "min": "0x01",
+            "max": "0x01"
+        },
+        "Cmd0": "0x2F",
+        "Cmd1": "0x06"
+    },
+    {
+        "Section": "3.13.1.10",
+        "Name": "APP_CNF_BDB_SET_ACTIVE_DEFAULT_CENTRALIZED_KEY",
+        "Description": "EYDescription:On joining devices, set the default key or an install code to attempt to join the network.Usage:",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {
+                "useGlobal": "1",
+                "InstallCode": "18"
+            }
+        },
+        "Length": {
+            "min": "0x13",
+            "max": "0x13"
+        },
+        "Cmd0": "0x2F",
+        "Cmd1": "0x07"
+    },
+    {
+        "Section": "3.13.2.1",
+        "Name": "APP_CNF_BDB_COMMISSIONING_NOTIFICATION",
+        "Description": "Callback to receive notifications from BDB process.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Status": "1",
+                "Commissioning mode": "1",
+                "Remaining commissioning modes": "1"
+            }
+        },
+        "Length": {
+            "min": "0x03",
+            "max": "0x03"
+        },
+        "Cmd0": "0x4F",
+        "Cmd1": "0x80"
+    },
+    {
+        "Section": "3.14.1.1",
+        "Name": "GP_DATA_REQ",
+        "Description": "Callback to receive notifications from BDB process.",
+        "Request": {
+            "CommandType": "SREQ ",
+            "Fields": {
+                "Action": "1",
+                "TxOptions": "1",
+                "Application ID": "1",
+                "SrcID": "4",
+                "GPD IEEE address": "8",
+                "EndPoint": "1",
+                "GPD Command ID": "1",
+                "GPD ASU Length": "1",
+                "GPD ASU": "0-116",
+                "GPEP handle": "1",
+                "gpTxQueueEntry-Lifetime": "3"
+            }
+        },
+        "Length": {
+            "min": "0x17",
+            "max": "0x8C"
+        },
+        "Cmd0": "0x35",
+        "Cmd1": "0x01"
+    },
+    {
+        "Section": "3.14.1.2",
+        "Name": "GP_SEC_RSP",
+        "Description": "This message provides a mechanism for the Green Power EndPoint to provide security data intothe dGP stub.",
+        "Request": {
+            "CommandType": "SREQ ",
+            "Fields": {
+                "Status": "1",
+                "dGP stub handle ": "1",
+                "ApplicationID": "1",
+                "SrcID": "4",
+                "GPD IEEE address": "8",
+                "EndPoint": "1",
+                "GPDFScurityLevel": "1",
+                "GPDFKeyType": "1",
+                "GPDKey": "16",
+                "GPDSecurityFrameCounter": "4"
+            }
+        },
+        "Length": {
+            "min": "0x26",
+            "max": "0x26"
+        },
+        "Cmd0": "0x35",
+        "Cmd1": "0x02"
+    },
+    {
+        "Section": "3.14.2.2",
+        "Name": "GP_SEC_REQ",
+        "Description": "This message provides a mechanism for dGP stub to request security data from the Green PowerEndPoint in the host processor.",
+        "Request": {
+            "CommandType": "AREQ ",
+            "Fields": {
+                "ApplicationID": "1",
+                "SrcID": "4",
+                "GPD IEEE address": "8",
+                "Endpoint": "1",
+                "GPDFScurityLevel": "1",
+                "GPDFKeyType": "1",
+                "GPD Security Frame Counter": "1, 4",
+                "dGP stub handle": "1"
+            }
+        },
+        "Length": {
+            "min": "0x12",
+            "max": "0x15"
+        },
+        "Cmd0": "0x53",
+        "Cmd1": "0x03"
+    },
+    {
+        "Section": "3.14.2.3",
+        "Name": "GP_DATA_IND",
+        "Description": "This message provides a mechanism for identifying and conveying a received GPDF to the GreenPower EndPoint in the host processor.",
+        "Request": {
+            "CommandType": "AREQ ",
+            "Fields": {
+                "Status": "1",
+                "RSSI": "1",
+                "LinkQuality": "1",
+                "SeqNumber": "1",
+                "SrcAddrMode": "4",
+                "SrcPANID": "2",
+                "SrcAddress": "2, 8",
+                "DstAddrMode": "1",
+                "DstPANId": "2",
+                "DstAddress": "2, 8",
+                "GP MPDU Length ": "1",
+                "GP MPDU": "0-116"
+            }
+        },
+        "Length": {
+            "min": "0x11",
+            "max": "0x91"
+        },
+        "Cmd0": "0x55",
+        "Cmd1": "0x04"
+    }
+]
