@@ -25,3 +25,4 @@ The format of each entry in the JSON data follows the example below:
     "Cmd1": "0x12"
 },
 ```
+- Values in `Fields` are in bytes
