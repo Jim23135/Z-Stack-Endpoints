@@ -4,7 +4,7 @@ A JSON file that contains most of the endpoints documented in the Z-Stack Monito
 
 ## Format
 The format of each entry in the JSON data follows the example below:
-```
+```json
 {
     "Section": "3.2.1.7",
     "Name": "DATA_RETRIEVE",
