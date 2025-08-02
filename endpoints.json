@@ -2483,6 +2483,26 @@
         "Cmd1": "0x47"
     },
     {
+        "Section": "3.12.2.23",
+        "Name": "ZDO_END_DEVICE_ANNCE_IND",
+        "Description": "This callback indicates the ZDO End Device Announce",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "SrcAddr": "2",
+                "NwkAddr": "2",
+                "IEEEAddr": "8",
+                "Capabilites": "1"
+            }
+        },
+        "Length": {
+            "min": "0x0D",
+            "max": "0x0D"
+        },
+        "Cmd0": "0x45",
+        "Cmd1": "0xC1"
+    },
+    {
         "Section": "3.12.1.40",
         "Name": "ZDO_EXT_REMOVE_ALL_GROUP",
         "Description": "This command handles the ZDO extended remove all group extension message.",
