@@ -1,6 +1,7 @@
 # Z-Stack-Endpoints
 A JSON file that contains most of the endpoints documented in the Z-Stack Monitor and Test API.pdf from Texas Instruments. There might be some missing or with incorrect values so double check the ones that you plan on using. These endpoints/APIs were pulled directly from the PDF by a parsing script that I created. The script is not super good looking which is why I didn't post it in this repository.
 
+- Note: A few hours after publishing this I noticed that any endpoint that spans multiple pages is probably not in the JSON file. I will end up fixing this at a later date.
 
 ## Format
 The format of each entry in the JSON data follows the example below:
