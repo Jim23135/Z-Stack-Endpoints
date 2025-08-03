@@ -727,6 +727,21 @@
         "Cmd1": "0x09"
     },
     {
+        "Section": "3.7.1.2",
+        "Name": "ZB_START_REQUEST",
+        "Description": "This command starts the ZigBee stack. When the ZigBee stack starts, the device reads configuration parameters from nonvolatile memory and the device joins its network. The ZigBee stack calls the zb_StartConfirm callback function when the startup process completes. After the start request process completes, the device is ready to send, receive, and route network traffic",
+        "Request": {
+            "CommandType": "SREQ",
+            "Fields": {}
+        },
+        "Length": {
+            "min": "0x00",
+            "max": "0x00"
+        },
+        "Cmd0": "0x26",
+        "Cmd1": "0x00"
+    },
+    {
         "Section": "3.7.1.3",
         "Name": "ZB_PERMIT_JOINING_REQUEST",
         "Description": "This command is used to control the joining permissions and thus allows or disallows new devicesfrom joining the network.",
