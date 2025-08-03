@@ -1373,6 +1373,28 @@
         "Cmd1": "0x09"
     },
     {
+        "Section": "3.8.2.1",
+        "Name": "SYS_RESET_IND",
+        "Description": "This callback is sent by the device to indicate that a reset has occurred.",
+        "Request": {
+            "CommandType": "AREQ",
+            "Fields": {
+                "Reason": "1",
+                "TransportRev": "1",
+                "ProductId": "1",
+                "MajorRel": "1",
+                "MinorRel": "1",
+                "HwRev": "1"
+            }
+        },
+        "Length": {
+            "min": "0x06",
+            "max": "0x06"
+        },
+        "Cmd0": "0x41",
+        "Cmd1": "0x80"
+    },
+    {
         "Section": "3.8.2.2",
         "Name": "SYS_OSAL_TIMER_EXPIRED",
         "Description": "This callback is sent by the device to indicate that a specific timer has been expired.",
